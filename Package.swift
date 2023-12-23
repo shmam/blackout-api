@@ -11,15 +11,15 @@ let package = Package(
         .package(url: "https://github.com/vapor/vapor.git", from: "4.83.1"),
         // 🗄 An ORM for SQL and NoSQL databases.
         .package(url: "https://github.com/vapor/fluent.git", from: "4.8.0"),
-        // 🐬 Fluent driver for MySQL.
-        .package(url: "https://github.com/vapor/fluent-mysql-driver.git", from: "4.0.0"),
+        // 🐘 Fluent driver for PostGreSql.
+        .package(url: "https://github.com/vapor/fluent-postgres-driver.git", from: "2.8.0"),
     ],
     targets: [
         .executableTarget(
             name: "App",
             dependencies: [
                 .product(name: "Fluent", package: "fluent"),
-                .product(name: "FluentMySQLDriver", package: "fluent-mysql-driver"),
+                .product(name: "FluentPostgresDriver", package: "fluent-postgres-driver"),
                 .product(name: "Vapor", package: "vapor"),
             ]
         ),
@@ -30,7 +30,7 @@ let package = Package(
             // Workaround for https://github.com/apple/swift-package-manager/issues/6940
             .product(name: "Vapor", package: "vapor"),
             .product(name: "Fluent", package: "Fluent"),
-            .product(name: "FluentMySQLDriver", package: "fluent-mysql-driver"),
+            .product(name: "FluentPostgresDriver", package: "fluent-postgres-driver"),
         ])
     ]
 )

@@ -1,0 +1,24 @@
+name: Tag Release
+
+on:
+  workflow_call:
+    inputs:
+      tag-name:
+        type: string
+        required: true
+
+jobs:
+  tag-release:
+    name: Tag Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Tag release
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/${{ inputs.tag-name }}',
+              sha: context.sha
+            })

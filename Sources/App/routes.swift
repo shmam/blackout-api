@@ -3,12 +3,10 @@ import Vapor
 
 func routes(_ app: Application) throws {
     app.get { req async in
-        "It works!"
+        "ok"
     }
 
-    app.get("hello") { req async -> String in
-        "Hello, world!"
-    }
-
-    try app.register(collection: TodoController())
+    try app.register(collection: BlobController())
+    try app.register(collection: PoemController())
+    try app.register(collection: FeedController())
 }
